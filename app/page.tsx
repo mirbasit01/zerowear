@@ -17,12 +17,7 @@ const page = () => {
                 <h3>Featured Events</h3>
 
                 <ul className="events">
-                    {/* {events && events.length > 0 && events.map((event: IEvent) => (
-                        <li key={event.title} className="list-none">
-                            <E
-                            ventCard {...event} />
-                        </li>
-                    ))} */}
+                     
                     {events.map((event) => (
                         <li key={event.title}>
                             <EventCard {...event} />
