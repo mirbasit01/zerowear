@@ -87,8 +87,6 @@ const EventSchema = new Schema<EventDocument, EventModel>(
     },
     slug: {
       type: String,
-      unique: true, // uniqueness enforced via index below
-      index: true,
       trim: true,
     },
     description: {
