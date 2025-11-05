@@ -35,8 +35,11 @@ The hub for developer events — discover hackathons, meetups, and conferences i
 
 ## Features
 - Responsive UI with event cards and categories
-- API route to create events: `POST /api/events` (JSON or form-data)
-- Strongly-typed Mongoose models for Events and Bookings
+- Complete REST API for events and bookings
+- Advanced search and filtering
+- Analytics dashboard data
+- Image upload via Cloudinary
+- Strongly-typed Mongoose models
 
 ## Project Structure (high level)
 - `app/` — routes, pages, and layout
@@ -45,6 +48,33 @@ The hub for developer events — discover hackathons, meetups, and conferences i
 - `database/` — Mongoose models
 - `public/` — static assets (icons/images)
 
+## API Routes
+- `GET /api/events` — list all events
+- `POST /api/events` — create event (JSON/form-data with image upload)
+- `GET /api/events/[slug]` — get single event
+- `PUT /api/events/[slug]` — update event
+- `DELETE /api/events/[slug]` — delete event
+- `GET /api/events/search` — search/filter events
+- `GET /api/bookings` — list bookings (optional ?eventId=...)
+- `POST /api/bookings` — create booking
+- `GET /api/stats` — analytics data
+- `GET /api/categories` — unique tags/modes/locations
+
+## Environment Variables
+```bash
+# Required
+MONGODB_URI=mongodb+srv://...
+
+# Optional (for image uploads)
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+# Optional (for analytics)
+NEXT_PUBLIC_POSTHOG_KEY=phc_xxx
+```
+
 ## Notes
 - Ensure images referenced in `lib/constants.ts` exist under `public/images`.
 - If using PostHog, Next rewrites are configured in `next.config.ts` under `/ingest`.
+- Image uploads require Cloudinary credentials and use the nodejs runtime.
