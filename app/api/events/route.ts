@@ -4,7 +4,11 @@ import Event from "@/database/event.model";
 import { resolve } from "path";
 import { v2 as cloudinary } from "cloudinary";
 
-// Handle GET /api/events
+/**
+ * Retrieve up to 100 most recently created events.
+ *
+ * @returns A NextResponse containing `{ events: Event[] }` with status 200 on success; on failure, a JSON response with `message` and `error` fields and status 500.
+ */
 export async function GET() {
     try {
         await connectToDatabase();
@@ -18,7 +22,16 @@ export async function GET() {
     }
 }
 
-// Handle POST /api/events
+/**
+ * Create a new event using request body data and an uploaded image, upload the image to Cloudinary, and persist the event to the database.
+ *
+ * @param req - The incoming request; must be JSON or form-data. For form-data requests an `image` file entry is required.
+ * @returns A JSON response with a `message` and, on success, an `event` object. Possible status codes:
+ *  - 201: Event created successfully (response includes `event`)
+ *  - 400: Image file is required
+ *  - 415: Unsupported Content-Type
+ *  - 500: Failed to create event (server error)
+ */
 export async function POST(req: NextRequest) {
     try {
         await connectToDatabase();
