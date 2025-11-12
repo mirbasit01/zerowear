@@ -13,8 +13,7 @@ type CachedConnection = {
   promise: Promise<Mongoose> | null;
 };
 
-// Augment the Node.js global type so TypeScript knows about our cache
-declare global {
+ declare global {
   // eslint-disable-next-line no-var
   var mongooseConn: CachedConnection | undefined;
 }
