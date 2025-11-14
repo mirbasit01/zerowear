@@ -4,8 +4,6 @@ import events from '@/lib/constants'
  
 
 const page = () => {
-
- 
     return (
         <section>
             <h1 className="text-center">The Hub for Every Dev <br /> Event You Can&apos;t Miss</h1>
@@ -19,10 +17,8 @@ const page = () => {
                     {events.map((event) => (
                         <li key={event.title}>
                             <EventCard {...event} />
-                            
                         </li>
                     ))}
-
                 </ul>
             </div>
         </section>
