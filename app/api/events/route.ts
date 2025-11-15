@@ -35,8 +35,6 @@ export async function POST(req: NextRequest) {
 
         if (contentType.includes("multipart/form-data")) {
             formData = await req.formData();
-            
-            // Process form data
             for (const [key, value] of formData.entries()) {
                 if (key === 'agenda' || key === 'tags') {
                     try {
