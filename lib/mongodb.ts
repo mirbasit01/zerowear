@@ -1,9 +1,4 @@
-/*
-  lib/mongodb.ts
-  Strongly-typed, cached Mongoose connection for Next.js (App Router / API routes).
-  - Reuses a single connection across hot reloads in development to avoid connection storms
-  - Fails fast if MONGODB_URI is not provided
-*/
+
 
 import mongoose, { type Mongoose } from "mongoose";
 
